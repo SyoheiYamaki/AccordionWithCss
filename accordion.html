@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<meta charset="utf-8">
+
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<title>CSSでアコーディオン風に作成</title>
 </head>
 <body>
 
 	<style type="text/css">
-
-		:root {
-		  --arrow_up_display: none;
-		  --arrow_down_display: none;
-		}
 
 		/***** ラベル *******************************/
 		.checkbox_label{
@@ -31,6 +28,11 @@
 			float: right;
 		}
 
+		 label:after {
+		  font-family: FontAwesome; 
+		  content: "\f106";
+		  float: right;
+		 }
 
 
 		/***** チェック前 *******************************/
@@ -47,8 +49,12 @@
 		/***** チェック後 *******************************/
 
 		/*ボックス表示*/
-		 .hidden_checkbox:checked + .hidden_box{
+		 .hidden_checkbox:checked ~ .hidden_box{
 		 	height: 40px;
+		 }
+
+		 .hidden_checkbox:checked ~ label:after{
+		  content: "\f107";		 	
 		 }
 
 		 p{
@@ -59,59 +65,58 @@
 		    padding: 10px 15px;		 	
 		 }
 
-		/*下向き矢印はデフォルトではhidden*/
-		[class ~= "fa-chevron-down"]{
-			display: var(--arrow_down_display);
-		}
 	</style>
 
-	<!-- Profile -->
-	<label for="target_1" class="checkbox_label" >
-		<i class="fa fa-user fa-fw"></i>Profile
-		<i class="fa fa-chevron-up"></i>
-		<i class="fa fa-chevron-down"></i>		
-	</label>
 
-	<!-- チェックボックスのチェックの有無をクリックでの分岐に使用 -->
-	<input type="checkbox" id="target_1" class="hidden_checkbox" style="display: none;">
-	
-	<!-- ここのdivはクリックされた時に表示 -->
-	<div class="hidden_box">
-		<p>表示します</p>
+	<!-- Profile -->
+	<div class="profile_bar">
+
+			<!-- チェックボックスのチェックの有無をクリックでの分岐に使用 -->
+			<input type="checkbox" id="target_1" class="hidden_checkbox" style="display: none;">
+
+			<label for="target_1" class="checkbox_label" >
+				<i class="fa fa-user fa-fw"></i>Profile	
+			</label>
+			
+			<!-- ここのdivはクリックされた時に表示 -->
+			<div class="hidden_box">
+				<p>表示します</p>
+			</div>
 	</div>
 
 	<!-- Configs -->
-	<label for="target_2" class="checkbox_label" >
-		<i class="fa fa-envelope"></i>
-		Mail
-		<i class="fa fa-chevron-up"></i>
-		<i class="fa fa-chevron-down"></i>
-	</label>
+	<div class="cinfigs_bar">
 
-	<!-- チェックボックスのチェックの有無をクリックでの分岐に使用 -->
-	<input type="checkbox" id="target_2" class="hidden_checkbox" style="display: none;">
-	
-	<!-- ここのdivはクリックされた時に表示 -->
-	<div class="hidden_box">
-		<p>表示します</p>
+			<!-- チェックボックスのチェックの有無をクリックでの分岐に使用 -->
+			<input type="checkbox" id="target_2" class="hidden_checkbox" style="display: none;">
+
+			<label for="target_2" class="checkbox_label" >
+				<i class="fa fa-envelope"></i>
+				Mail
+			</label>
+			
+			<!-- ここのdivはクリックされた時に表示 -->
+			<div class="hidden_box">
+				<p>表示します</p>
+			</div>
 	</div>
 
 
 	<!-- Mail -->
-	<label for="target_3" class="checkbox_label" >
-		<i class="fa fa-cog"></i>
-		Configs
-		<i class="fa fa-chevron-up"></i>
-		<i class="fa fa-chevron-down"></i>
-	</label>
+	<div class="mail_bar">
 
-	<!-- チェックボックスのチェックの有無をクリックでの分岐に使用 -->
-	<input type="checkbox" id="target_3" class="hidden_checkbox" style="display: none;">
-	
-	<!-- ここのdivはクリックされた時に表示 -->
-	<div class="hidden_box">
-		<p>表示します</p>
-	</div>	
+			<!-- チェックボックスのチェックの有無をクリックでの分岐に使用 -->
+			<input type="checkbox" id="target_3" class="hidden_checkbox" style="display: none;">
+			<label for="target_3" class="checkbox_label" >
+				<i class="fa fa-cog"></i>
+				Configs
+			</label>
+			
+			<!-- ここのdivはクリックされた時に表示 -->
+			<div class="hidden_box">
+				<p>表示します</p>
+			</div>	
+	</div>
 
 </body>
 </html>
